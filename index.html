@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nipnetic</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #0d0d0d;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      color: white;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    #logo {
+      width: 300px;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    @keyframes pulse {
+      0% { filter: drop-shadow(0 0 10px #ff00ff); }
+      50% { filter: drop-shadow(0 0 25px #00ffff); }
+      100% { filter: drop-shadow(0 0 10px #ff00ff); }
+    }
+
+    .campaigns {
+      display: none;
+      gap: 40px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .campaigns.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .campaigns img {
+      width: 200px;
+      height: auto;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .campaigns img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+    }
+
+    .choose-text {
+      font-size: 24px;
+      margin-bottom: 20px;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .choose-text.active {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img id="logo" src="assets/nipneticlogo.webp" alt="Nipnetic Logo">
+    <div class="choose-text" id="chooseText">Choose Your Frequency</div>
+    <div class="campaigns" id="campaigns">
+      <a href="bassskin.html"><img src="assets/EchoSyn.jpeg" alt="BassSkin"></a>
+      <a href="hardsignal.html"><img src="assets/Nyxa.jpeg" alt="HardSignal"></a>
+      <a href="sukimod.html"><img src="assets/suki.jpeg" alt="SukiMod"></a>
+    </div>
+  </div>
+
+  <script>
+    const logo = document.getElementById('logo');
+    const campaigns = document.getElementById('campaigns');
+    const chooseText = document.getElementById('chooseText');
+
+    logo.addEventListener('click', () => {
+      logo.style.opacity = '0';
+      logo.style.transform = 'scale(0.8)';
+      setTimeout(() => {
+        logo.style.display = 'none';
+        campaigns.classList.add('active');
+        chooseText.classList.add('active');
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
